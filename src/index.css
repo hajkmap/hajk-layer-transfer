@@ -1,0 +1,30 @@
+body {
+  font-family: Roboto, sans-serif;
+  margin: auto;
+  padding: 1rem;
+}
+body .c-json-view {
+  background-color: #2c2c2c;
+  border-radius: 8px;
+}
+body .c-line-del {
+  background-color: #43393a;
+}
+
+body .c-line-add {
+  background-color: #2d332e;
+}
+
+body .c-json-null,
+body .c-json-boolean,
+body .c-json-undefined,
+body .c-json-regexp,
+body .c-json-date,
+body .c-json-set,
+body .c-json-map,
+body .c-json-error,
+body .c-json-symbol,
+body .c-json-function {
+  background-color: #2b2b2b;
+  border-color: #747474;
+}
