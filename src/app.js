@@ -20,6 +20,23 @@ global.init().then(() => {
     palette: {
       mode: "dark", // Lets force dark mode.
     },
+    transitions: {
+      duration: {
+        shortest: 0,
+        shorter: 0,
+        short: 0,
+        standard: 0,
+        complex: 0,
+        enteringScreen: 0,
+        leavingScreen: 0,
+      },
+      easing: {
+        easeInOut: 'linear',
+        easeOut: 'linear',
+        easeIn: 'linear',
+        sharp: 'linear',
+      },
+    },    
   });
 
   const root = ReactDOM.createRoot(document.getElementById("root"));

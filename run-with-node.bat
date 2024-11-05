@@ -2,7 +2,8 @@
 @REM But! Sometimes its possible to run nodejs stuff.
 @REM So run this batch file to run dev-version using npm.
 @REM Note that Startup is pretty slow
+@REM Make sure that you have "npm run make".
 
 if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && start "" /min "%~dpnx0" %* && exit
-npm run start
+npm run startprod
 exit

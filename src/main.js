@@ -3,6 +3,8 @@ const global = require("./models/Global.js");
 
 require("./api.js");
 
+app.disableHardwareAcceleration();
+
 if (require("electron-squirrel-startup")) {
   app.quit();
 }

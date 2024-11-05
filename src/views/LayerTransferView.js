@@ -18,9 +18,9 @@ import DifferenceIcon from "@mui/icons-material/Difference";
 import global from "../models/Global";
 import SelectionCompare from "./SelectionCompare";
 
-const Transition = React.forwardRef(function Transition(props, ref) {
-  return <Slide direction="up" ref={ref} {...props} />;
-});
+// const Transition = React.forwardRef(function Transition(props, ref) {
+//   return <Slide direction="up" ref={ref} {...props} />;
+// });
 
 const LayerTransferView = () => {
   const [targetSelection, setTargetSelection] = useState(null);
@@ -132,7 +132,7 @@ const LayerTransferView = () => {
         fullScreen
         open={diffOpen}
         onClose={handleClose}
-        TransitionComponent={Transition}
+        // TransitionComponent={Transition}
       >
         <AppBar sx={{ position: "relative" }}>
           <Toolbar>
