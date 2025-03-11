@@ -88,7 +88,7 @@ class Global {
         } else if (this.settings.idType === "uuid") {
           // Should probably work with nodejs backend.
           // Not tested live!
-          return uuidv4().replace(/-/gi, "");
+          return uuidv4().split("-")[0];
         }
       };
 

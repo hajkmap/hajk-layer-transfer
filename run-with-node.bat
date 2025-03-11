@@ -5,5 +5,5 @@
 @REM Make sure that you have "npm run make".
 
 if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && start "" /min "%~dpnx0" %* && exit
-npm run startprod
+npm run start
 exit
