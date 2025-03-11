@@ -25,21 +25,40 @@ import SelectionCompare from "./SelectionCompare";
 const LayerTransferView = () => {
   const [targetSelection, setTargetSelection] = useState(null);
   const [sourceSelection, setSourceSelection] = useState(null);
-  const [diffOpen, setDiffOpen] = React.useState(false);
+  const [diffOpen, setDiffOpen] = useState(false);
+  const [lastSelectionKey, setLastSelectionKey] = useState(null);
 
   const handleClose = () => {
     setDiffOpen(false);
   };
 
+  // Subscribe to global selection changes and track the last selection key.
   useEffect(() => {
     global.observer.subscribe("selection-changed", (m) => {
+      setLastSelectionKey(m.key);
       if (m.key === "source") {
         setSourceSelection(m.value);
       } else if (m.key === "target") {
         setTargetSelection(m.value);
       }
     });
-  }, [global, setSourceSelection, setTargetSelection]);
+  }, []);
+
+  // Add keyup event listener for copying to target when F5 is pressed,
+  // but only if the last selection change was for "source".
+  useEffect(() => {
+    const handleKeyUp = (e) => {
+      if (e.key === "F5" && lastSelectionKey === "source" && sourceSelection) {
+        e.preventDefault(); // Prevent the default F5 refresh
+        global.observer.publish("copy-to-target", sourceSelection);
+      }
+    };
+
+    window.addEventListener("keyup", handleKeyUp);
+    return () => {
+      window.removeEventListener("keyup", handleKeyUp);
+    };
+  }, [lastSelectionKey, sourceSelection]);
 
   return (
     <div>
@@ -66,7 +85,7 @@ const LayerTransferView = () => {
             variant="contained"
             size="small"
             sx={{ mb: "1rem", mr: "1rem" }}
-            onClick={(e) => {
+            onClick={() => {
               setDiffOpen(!diffOpen);
               global.observer.publish("compare", {
                 source: sourceSelection,
@@ -83,7 +102,7 @@ const LayerTransferView = () => {
             size="small"
             sx={{ mb: "1rem", mr: "1rem" }}
             title={"Note: Layer will get the targets ID."}
-            onClick={(e) => {
+            onClick={() => {
               global.observer.publish("replace-in-target", {
                 source: sourceSelection,
                 target: targetSelection,
@@ -97,7 +116,7 @@ const LayerTransferView = () => {
             disabled={!sourceSelection}
             variant="contained"
             size="small"
-            onClick={(e) => {
+            onClick={() => {
               global.observer.publish("copy-to-target", sourceSelection);
             }}
             sx={{ mb: "1rem" }}
@@ -106,7 +125,7 @@ const LayerTransferView = () => {
             }
             endIcon={<ArrowForwardIcon />}
           >
-            Copy to target
+            Copy to target [F5]
           </Button>
         </Grid>
         <Grid
@@ -118,7 +137,7 @@ const LayerTransferView = () => {
             disabled={!targetSelection}
             variant="contained"
             size="small"
-            onClick={(e) => {
+            onClick={() => {
               global.observer.publish("delete-in-target", targetSelection);
             }}
             sx={{ mb: "1rem" }}
