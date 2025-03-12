@@ -85,6 +85,7 @@ const LayerList = (props) => {
     }
 
     data[layerType].push(clone);
+    deSelect();
     refreshData(data);
   };
 
@@ -440,6 +441,7 @@ const LayerList = (props) => {
               disabled={!getTypeList().length}
               onChange={(e) => {
                 setTextFilter(e.target.value);
+                deSelect();
               }}
             />
           </Grid>
