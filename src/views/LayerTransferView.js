@@ -130,7 +130,15 @@ const LayerTransferView = () => {
   }, [canUndo]);
 
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        flex: 1,
+        minHeight: 0,
+        overflow: "hidden",
+      }}
+    >
       <Typography
         variant="body2"
         sx={{
@@ -138,13 +146,14 @@ const LayerTransferView = () => {
           color: "text.secondary",
           display: "flex",
           alignItems: "center",
+          flexShrink: 0,
         }}
       >
         Hold Ctrl/Cmd to multi-select.
         <StatusLegend />
       </Typography>
-      <Grid container spacing={2}>
-        <Grid item xs={6}>
+      <Grid container spacing={2} sx={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
+        <Grid item xs={6} sx={{ display: "flex", minHeight: 0 }}>
           <LayerList
             openButtonText={"Open source layer config"}
             id={"sourceData"}
@@ -152,7 +161,7 @@ const LayerTransferView = () => {
             clearFilesToken={clearFilesToken}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={6} sx={{ display: "flex", minHeight: 0 }}>
           <LayerList
             openButtonText={"Open target layer config"}
             id={"targetData"}
@@ -160,6 +169,8 @@ const LayerTransferView = () => {
             clearFilesToken={clearFilesToken}
           />
         </Grid>
+      </Grid>
+      <Grid container spacing={2} sx={{ flexShrink: 0 }} style={{ marginTop: 0 }}>
         <Grid
           item
           xs={6}

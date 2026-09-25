@@ -127,7 +127,15 @@ const MapTransferView = () => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          flex: 1,
+          minHeight: 0,
+          overflow: "hidden",
+        }}
+      >
         <Typography
           variant="body2"
           sx={{
@@ -136,6 +144,7 @@ const MapTransferView = () => {
             display: "flex",
             alignItems: "center",
             flexWrap: "wrap",
+            flexShrink: 0,
           }}
         >
           Drag a group or layer from the source tree onto a group in the target
@@ -143,8 +152,8 @@ const MapTransferView = () => {
           reorder. 1. Open layers config. 2. Open map config.
           <StatusLegend />
         </Typography>
-        <Grid container spacing={2}>
-          <Grid item xs={6}>
+        <Grid container spacing={2} sx={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
+          <Grid item xs={6} sx={{ display: "flex", minHeight: 0 }}>
             <MapTree
               openButtonText={"Open source map config"}
               openLayersButtonText={"Open source layers"}
@@ -155,7 +164,7 @@ const MapTransferView = () => {
               clearFilesToken={clearFilesToken}
             />
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={6} sx={{ display: "flex", minHeight: 0 }}>
             <MapTree
               openButtonText={"Open target map config"}
               openLayersButtonText={"Open target layers"}
@@ -166,6 +175,8 @@ const MapTransferView = () => {
               clearFilesToken={clearFilesToken}
             />
           </Grid>
+        </Grid>
+        <Grid container spacing={2} sx={{ flexShrink: 0 }} style={{ marginTop: 0 }}>
           <Grid
             item
             xs={6}

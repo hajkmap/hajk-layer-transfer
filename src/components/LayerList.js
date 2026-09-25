@@ -602,8 +602,18 @@ const LayerList = (props) => {
   };
 
   return (
-    <Paper sx={{ p: "1rem" }}>
-      <Grid container spacing={0}>
+    <Paper
+      sx={{
+        p: "1rem",
+        flex: 1,
+        minHeight: 0,
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+      }}
+    >
+      <Grid container spacing={0} sx={{ flexShrink: 0 }}>
         <Grid item xs={6}>
           <Button
             variant="contained"
@@ -634,7 +644,7 @@ const LayerList = (props) => {
           )}
         </Grid>
       </Grid>
-      <FormControl sx={{ width: "100%" }} size="small">
+      <FormControl sx={{ width: "100%", flexShrink: 0 }} size="small">
         <InputLabel id="layer_type">Layer type</InputLabel>
         <Select
           disabled={!getTypeList().length}
@@ -654,7 +664,7 @@ const LayerList = (props) => {
           })}
         </Select>
       </FormControl>
-      <FormControl sx={{ width: "100%" }} size="small">
+      <FormControl sx={{ width: "100%", flexShrink: 0 }} size="small">
         <Grid container spacing={0}>
           <Grid item xs={6}>
             <SortButtons />
@@ -675,10 +685,21 @@ const LayerList = (props) => {
           </Grid>
         </Grid>
       </FormControl>
-      <FormControl sx={{ mt: "1rem", width: "100%" }} size="small">
+      <FormControl
+        sx={{
+          mt: "1rem",
+          width: "100%",
+          flex: 1,
+          minHeight: 0,
+          display: "flex",
+          flexDirection: "column",
+        }}
+        size="small"
+      >
         <div
           style={{
-            height: "350px",
+            flex: 1,
+            minHeight: 0,
             overflowY: "auto",
             border: `1px solid ${global.theme.palette.grey["800"]}`,
             borderRadius: global.theme.shape.borderRadius,

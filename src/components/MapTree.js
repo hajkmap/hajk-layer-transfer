@@ -695,8 +695,18 @@ const MapTree = (props) => {
     selectedSubtree?.rootKey === selectionKey(node.data?.kind, node.data?.hajkId);
 
   return (
-    <Paper sx={{ p: "1rem" }}>
-      <Grid container spacing={0}>
+    <Paper
+      sx={{
+        p: "1rem",
+        flex: 1,
+        minHeight: 0,
+        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",
+      }}
+    >
+      <Grid container spacing={0} sx={{ flexShrink: 0 }}>
         <Grid item xs={isSourceData ? 12 : 8}>
           <Button
             variant="contained"
@@ -741,7 +751,10 @@ const MapTree = (props) => {
           )}
         </Grid>
       </Grid>
-      <Typography variant="caption" sx={{ display: "block", mb: "0.75rem" }}>
+      <Typography
+        variant="caption"
+        sx={{ display: "block", mb: "0.75rem", flexShrink: 0 }}
+      >
         {hasLookup
           ? props.layersFromOther
             ? `Showing names from the other panel's layers file (${lookupSize(
@@ -753,7 +766,12 @@ const MapTree = (props) => {
           ? ". Comparison colors wait until both source and target layers files are open."
           : ""}
       </Typography>
-      <Grid container spacing={1} sx={{ mb: "0.75rem" }} alignItems="center">
+      <Grid
+        container
+        spacing={1}
+        sx={{ mb: "0.75rem", flexShrink: 0 }}
+        alignItems="center"
+      >
         <Grid item xs={6}>
           <ToggleButton
             disabled={!hasData}
@@ -802,7 +820,8 @@ const MapTree = (props) => {
       <div
         className="map-dnd-tree"
         style={{
-          height: "380px",
+          flex: 1,
+          minHeight: 0,
           overflowY: "auto",
           border: `1px solid ${global.theme.palette.grey["800"]}`,
           borderRadius: global.theme.shape.borderRadius,

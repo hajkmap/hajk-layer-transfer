@@ -3,10 +3,18 @@
   animation: none !important;
 }
 
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   font-family: Roboto, sans-serif;
-  margin: auto;
+  margin: 0;
   padding: 1rem;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 
 body .c-json-view {
@@ -47,7 +55,7 @@ body .c-json-function {
 }
 
 .map-dnd-tree-root {
-  min-height: 360px;
+  min-height: 100%;
 }
 
 .map-dnd-tree-root-target::after {

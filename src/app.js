@@ -19,16 +19,34 @@ const AppShell = () => {
   const [mode, setMode] = React.useState("layers");
 
   return (
-    <Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100%",
+        minHeight: 0,
+        overflow: "hidden",
+      }}
+    >
       <Tabs
         value={mode}
         onChange={(_, value) => setMode(value)}
-        sx={{ mb: 2, minHeight: 40 }}
+        sx={{ mb: 2, minHeight: 40, flexShrink: 0 }}
       >
         <Tab value="layers" label="Layer files" />
         <Tab value="maps" label="Map files (layer order)" />
       </Tabs>
-      {mode === "layers" ? <LayerTransferView /> : <MapTransferView />}
+      <Box
+        sx={{
+          flex: 1,
+          minHeight: 0,
+          display: "flex",
+          flexDirection: "column",
+          overflow: "hidden",
+        }}
+      >
+        {mode === "layers" ? <LayerTransferView /> : <MapTransferView />}
+      </Box>
     </Box>
   );
 };
