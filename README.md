@@ -37,6 +37,14 @@ Compare **matches** by `id`, then by `caption`. It then diffs the rest of the la
 
 Opening a new source file always starts without leftover compare colors. Colors appear again after a target file is opened. After a successful **Save to file**, copied/replaced greens and missing oranges are reset and the lists are compared again.
 
+### Main UI
+
+![image](https://github.com/hajkmap/hajk-layer-transfer/assets/73874338/7aebfe79-61f8-4420-9d8f-9e23179ee734)
+
+### Simple json comparison feature
+
+![image](https://github.com/hajkmap/hajk-layer-transfer/assets/73874338/cee3309b-ca3b-499e-bdb5-9c7c4ed23f11)
+
 ### Map files (layer order)
 
 This tab edits Hajk `layerswitcher` trees (`groups` and `baselayers`). Other map tools and settings are left as they are.
@@ -67,13 +75,8 @@ When you copy a layer definition in Layer files first, the map tab reuses that p
 - Undo and clear loaded files
 - Simple replaceOnSave functionality (configured in config)
 
-### Main UI
+<img width="2085" height="1021" alt="mapconfig" src="https://github.com/user-attachments/assets/64b248e9-247f-4db6-b06a-34219c704c51" />
 
-![image](https://github.com/hajkmap/hajk-layer-transfer/assets/73874338/7aebfe79-61f8-4420-9d8f-9e23179ee734)
-
-### Simple json comparison feature
-
-![image](https://github.com/hajkmap/hajk-layer-transfer/assets/73874338/cee3309b-ca3b-499e-bdb5-9c7c4ed23f11)
 
 ### New IDs?
 
