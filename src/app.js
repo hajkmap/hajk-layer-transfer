@@ -9,9 +9,29 @@ import * as ReactDOM from "react-dom/client";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { Box, Tab, Tabs } from "@mui/material";
 import global from "./models/Global";
 
 import LayerTransferView from "./views/LayerTransferView";
+import MapTransferView from "./views/MapTransferView";
+
+const AppShell = () => {
+  const [mode, setMode] = React.useState("layers");
+
+  return (
+    <Box>
+      <Tabs
+        value={mode}
+        onChange={(_, value) => setMode(value)}
+        sx={{ mb: 2, minHeight: 40 }}
+      >
+        <Tab value="layers" label="Layer files" />
+        <Tab value="maps" label="Map files (layer order)" />
+      </Tabs>
+      {mode === "layers" ? <LayerTransferView /> : <MapTransferView />}
+    </Box>
+  );
+};
 
 global.init().then(() => {
   // Lets run this app.
@@ -31,12 +51,12 @@ global.init().then(() => {
         leavingScreen: 0,
       },
       easing: {
-        easeInOut: 'linear',
-        easeOut: 'linear',
-        easeIn: 'linear',
-        sharp: 'linear',
+        easeInOut: "linear",
+        easeOut: "linear",
+        easeIn: "linear",
+        sharp: "linear",
       },
-    },    
+    },
   });
 
   const root = ReactDOM.createRoot(document.getElementById("root"));
@@ -44,7 +64,7 @@ global.init().then(() => {
   root.render(
     <ThemeProvider theme={global.theme}>
       <CssBaseline />
-      <LayerTransferView />
+      <AppShell />
     </ThemeProvider>
   );
 });

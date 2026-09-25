@@ -13,4 +13,11 @@ module.exports = [
       },
     },
   },
+  {
+    test: /\.m?js$/,
+    include: /node_modules[\\/](@minoru|framer-motion|motion|dnd-multi-backend)/,
+    resolve: {
+      fullySpecified: false,
+    },
+  },
 ];
