@@ -1,5 +1,7 @@
 import ReactObserver from "react-event-observer";
 import ListComparator from "../controllers/ListComparator";
+import MapComparator from "../controllers/MapComparator";
+import { stripTempProps, mergeSwitcherTree, getSwitcherOptions } from "../utils/mapSwitcher";
 import { v4 as uuidv4 } from "uuid";
 
 class Global {
@@ -7,6 +9,7 @@ class Global {
     this.settings = null;
     this.observer = null;
     this.listComparator = null;
+    this.mapComparator = null;
   }
 
   init() {
@@ -15,6 +18,7 @@ class Global {
       this.readSettings().then((settings) => {
         this.settings = settings;
         this.listComparator = new ListComparator();
+        this.mapComparator = new MapComparator();
         resolve(true);
       });
     });
@@ -117,9 +121,32 @@ class Global {
     });
   }
 
-  saveJson(data) {
-    const cleanData = this.getCleanedData(data);
+  getCleanedMapData(workingData) {
+    const original = this.mapComparator.getOriginal("target") || workingData;
+    const merged = mergeSwitcherTree(original, workingData);
+    const options = getSwitcherOptions(merged);
 
+    if (options && this.settings.replaceOnSave.active) {
+      options.groups = JSON.parse(
+        this.findAndReplace(JSON.stringify(options.groups || []))
+      );
+      options.baselayers = JSON.parse(
+        this.findAndReplace(JSON.stringify(options.baselayers || []))
+      );
+    }
+
+    return stripTempProps(merged);
+  }
+
+  saveJson(data) {
+    return this.writeJson(this.getCleanedData(data));
+  }
+
+  saveMapJson(data) {
+    return this.writeJson(this.getCleanedMapData(data));
+  }
+
+  writeJson(cleanData) {
     return new Promise((resolve, reject) => {
       window.electron.ipcRenderer
         .invoke("/file/saveDialog", cleanData)

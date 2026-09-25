@@ -13,9 +13,9 @@ const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 1280,
-    height: 730,
+    height: 820,
     minWidth: 1280,
-    minHeight: 730,
+    minHeight: 760,
     title: "Hajk layer transfer",
     backgroundColor: "#000",
     webPreferences: {
