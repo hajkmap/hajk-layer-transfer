@@ -605,8 +605,10 @@ const LayerList = (props) => {
     <Paper
       sx={{
         p: "1rem",
-        flex: 1,
+        flex: "1 1 0px",
         minHeight: 0,
+        height: "100%",
+        maxHeight: "100%",
         width: "100%",
         display: "flex",
         flexDirection: "column",
@@ -689,8 +691,9 @@ const LayerList = (props) => {
         sx={{
           mt: "1rem",
           width: "100%",
-          flex: 1,
+          flex: "1 1 0px",
           minHeight: 0,
+          overflow: "hidden",
           display: "flex",
           flexDirection: "column",
         }}
@@ -698,8 +701,9 @@ const LayerList = (props) => {
       >
         <div
           style={{
-            flex: 1,
+            flex: "0 1 auto",
             minHeight: 0,
+            maxHeight: "100%",
             overflowY: "auto",
             border: `1px solid ${global.theme.palette.grey["800"]}`,
             borderRadius: global.theme.shape.borderRadius,

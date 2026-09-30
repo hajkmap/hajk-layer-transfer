@@ -55,7 +55,7 @@ body .c-json-function {
 }
 
 .map-dnd-tree-root {
-  min-height: 100%;
+  min-height: 0;
 }
 
 .map-dnd-tree-root-target::after {

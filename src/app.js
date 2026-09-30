@@ -38,7 +38,7 @@ const AppShell = () => {
       </Tabs>
       <Box
         sx={{
-          flex: 1,
+          flex: "1 1 0px",
           minHeight: 0,
           display: "flex",
           flexDirection: "column",

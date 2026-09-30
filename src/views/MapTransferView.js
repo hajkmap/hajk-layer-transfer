@@ -131,8 +131,9 @@ const MapTransferView = () => {
         style={{
           display: "flex",
           flexDirection: "column",
-          flex: 1,
+          flex: "1 1 0px",
           minHeight: 0,
+          height: "100%",
           overflow: "hidden",
         }}
       >
@@ -152,8 +153,22 @@ const MapTransferView = () => {
           reorder. 1. Open layers config. 2. Open map config.
           <StatusLegend />
         </Typography>
-        <Grid container spacing={2} sx={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
-          <Grid item xs={6} sx={{ display: "flex", minHeight: 0 }}>
+        <Grid
+          container
+          spacing={2}
+          sx={{ flex: "1 1 0px", minHeight: 0, overflow: "hidden" }}
+        >
+          <Grid
+            item
+            xs={6}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              minHeight: 0,
+              height: "100%",
+              overflow: "hidden",
+            }}
+          >
             <MapTree
               openButtonText={"Open source map config"}
               openLayersButtonText={"Open source layers"}
@@ -164,7 +179,17 @@ const MapTransferView = () => {
               clearFilesToken={clearFilesToken}
             />
           </Grid>
-          <Grid item xs={6} sx={{ display: "flex", minHeight: 0 }}>
+          <Grid
+            item
+            xs={6}
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              minHeight: 0,
+              height: "100%",
+              overflow: "hidden",
+            }}
+          >
             <MapTree
               openButtonText={"Open target map config"}
               openLayersButtonText={"Open target layers"}

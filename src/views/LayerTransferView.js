@@ -134,8 +134,9 @@ const LayerTransferView = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        flex: 1,
+        flex: "1 1 0px",
         minHeight: 0,
+        height: "100%",
         overflow: "hidden",
       }}
     >
@@ -152,8 +153,22 @@ const LayerTransferView = () => {
         Hold Ctrl/Cmd to multi-select.
         <StatusLegend />
       </Typography>
-      <Grid container spacing={2} sx={{ flex: 1, minHeight: 0, overflow: "hidden" }}>
-        <Grid item xs={6} sx={{ display: "flex", minHeight: 0 }}>
+      <Grid
+        container
+        spacing={2}
+        sx={{ flex: "1 1 0px", minHeight: 0, overflow: "hidden" }}
+      >
+        <Grid
+          item
+          xs={6}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: 0,
+            height: "100%",
+            overflow: "hidden",
+          }}
+        >
           <LayerList
             openButtonText={"Open source layer config"}
             id={"sourceData"}
@@ -161,7 +176,17 @@ const LayerTransferView = () => {
             clearFilesToken={clearFilesToken}
           />
         </Grid>
-        <Grid item xs={6} sx={{ display: "flex", minHeight: 0 }}>
+        <Grid
+          item
+          xs={6}
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            minHeight: 0,
+            height: "100%",
+            overflow: "hidden",
+          }}
+        >
           <LayerList
             openButtonText={"Open target layer config"}
             id={"targetData"}
